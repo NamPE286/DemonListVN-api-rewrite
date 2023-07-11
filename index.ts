@@ -35,16 +35,16 @@ for (const filePath of walkSync('./src')) {
         
     import(reqPath).then(fn => {
         if (reqPath.endsWith('GET', reqPath.length)) {
-            app.get(route, setCaching, fn.main)
+            app.get(route, setCaching, fn.default)
         }
         if (reqPath.endsWith('POST', reqPath.length)) {
-            app.post(route, checkUser, fn.main)
+            app.post(route, checkUser, fn.default)
         }
         if (reqPath.endsWith('PUT', reqPath.length)) {
-            app.put(route, checkUser, fn.main)
+            app.put(route, checkUser, fn.default)
         }
         if (reqPath.endsWith('DELETE', reqPath.length)) {
-            app.delete(route, checkUser, fn.main)
+            app.delete(route, checkUser, fn.default)
         }
     })
     console.log(`Loaded path ${reqPath} to route ${route}`)
