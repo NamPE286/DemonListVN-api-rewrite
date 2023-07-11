@@ -32,6 +32,7 @@ for (const filePath of walkSync('./src')) {
         .replaceAll(']', '')
         .replaceAll('{', ':')
         .replaceAll('}', '?')
+        
     import(reqPath).then(fn => {
         if (reqPath.endsWith('GET', reqPath.length)) {
             app.get(route, setCaching, fn.main)
@@ -45,7 +46,6 @@ for (const filePath of walkSync('./src')) {
         if (reqPath.endsWith('DELETE', reqPath.length)) {
             app.delete(route, checkUser, fn.main)
         }
-
     })
     console.log(`Loaded path ${reqPath} to route ${route}`)
 }
