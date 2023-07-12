@@ -8,12 +8,13 @@
     "skipLibCheck": true,
     "outDir": "_dist",
     "sourceMap": true,
+    "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
       "@src/*" : ["src/*"],
       "@classes/*" : ["classes/*"],
       "@db" : ["db.ts"]
     },
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
   }
 }
