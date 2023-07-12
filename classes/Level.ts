@@ -17,18 +17,23 @@ export default class {
         this.id = id
     }
 
-    async fetchData(): Promise<void> {
+    async init(): Promise<this> {
+        if (this.initialized) {
+            return this
+        }
+
         const { data, error } = await supabase
             .from('levels')
-            .select('*')
+            .select('id, name, creator, videoID, minProgress, flTop, dlTop, rating, ldm')
             .eq('id', this.id)
             .single()
 
         if (error) {
             throw error
         }
-
+        this.initialized = true
         Object.assign(this, data)
+        return this
     }
 
     async fetchRecord(): Promise<Record[]> {
@@ -36,15 +41,17 @@ export default class {
             .from('records')
             .select('*')
             .eq('levelid', this.id)
-        
-        if(error){
+
+        if (error) {
             throw error
         }
 
         var res: Record[] = []
-        for(const i of data){
+
+        for (const i of data) {
             res.push(Object.assign(new Record('', 0), i))
         }
+
         return res
     }
 }

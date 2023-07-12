@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
 
-export default function (req: Request, res: Response) {
+export default async function (req: Request, res: Response) {
     res.send({ timestamp: (new Date()).toISOString() })
 }

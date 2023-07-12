@@ -1,8 +1,10 @@
+import 'module-alias/register'
 import express from 'express'
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'
 import fs from 'fs'
 import path from 'path'
-import { checkUser, setCaching } from './middleware';
+import { checkUser, setCaching } from './middleware'
+
 
 dotenv.config()
 
@@ -32,21 +34,18 @@ for (const filePath of walkSync('./src')) {
         .replaceAll(']', '')
         .replaceAll('{', ':')
         .replaceAll('}', '?')
-        
-    import(reqPath).then(fn => {
-        if (reqPath.endsWith('GET', reqPath.length)) {
-            app.get(route, setCaching, fn.default)
-        }
-        if (reqPath.endsWith('POST', reqPath.length)) {
-            app.post(route, checkUser, fn.default)
-        }
-        if (reqPath.endsWith('PUT', reqPath.length)) {
-            app.put(route, checkUser, fn.default)
-        }
-        if (reqPath.endsWith('DELETE', reqPath.length)) {
-            app.delete(route, checkUser, fn.default)
-        }
-    })
+    if (reqPath.endsWith('GET', reqPath.length)) {
+        app.get(route, setCaching, require(reqPath).default)
+    }
+    if (reqPath.endsWith('POST', reqPath.length)) {
+        app.post(route, checkUser, require(reqPath).default)
+    }
+    if (reqPath.endsWith('PUT', reqPath.length)) {
+        app.put(route, checkUser, require(reqPath).default)
+    }
+    if (reqPath.endsWith('DELETE', reqPath.length)) {
+        app.delete(route, checkUser, require(reqPath).default)
+    }
     console.log(`Loaded path ${reqPath} to route ${route}`)
 }
 
