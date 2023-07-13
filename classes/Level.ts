@@ -43,7 +43,7 @@ export default class {
             .eq('levelid', this.id)
 
         if (error) {
-            throw error
+            throw new Error(error.message)
         }
 
         var res: Record[] = []
