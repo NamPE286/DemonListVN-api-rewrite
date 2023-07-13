@@ -36,7 +36,7 @@ export default class {
         return this
     }
 
-    async fetchRecord(): Promise<Record[]> {
+    async fetchRecords(): Promise<Record[]> {
         const { data, error } = await supabase
             .from('records')
             .select('*')
