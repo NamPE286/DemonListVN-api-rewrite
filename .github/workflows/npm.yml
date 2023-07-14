@@ -1,4 +1,4 @@
-name: Check dist/
+name: Build _dist/
 
 on:
   push:
@@ -30,3 +30,4 @@ jobs:
       - name: Rebuild the _dist/ directory
         run: 
           npm run build
+      - uses: stefanzweifel/git-auto-commit-action@v4
