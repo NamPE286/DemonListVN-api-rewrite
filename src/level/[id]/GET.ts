@@ -17,7 +17,7 @@ import Level from '@classes/Level';
  *              type: integer
  *      responses:
  *          200:
- *              description: Sucessful operation
+ *              description: Return a level
  *              content:
  *                  application/json:
  *                      schema:
