@@ -16,5 +16,6 @@
       "@db" : ["db.ts"]
     },
     "strictPropertyInitialization": false,
+    "lib": ["ES2021"]
   }
 }

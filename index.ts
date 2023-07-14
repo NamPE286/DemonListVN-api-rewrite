@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import fs from 'fs'
 import path from 'path'
 import { checkUser, setCaching } from './middleware'
+import swaggerDocs from 'utils/swagger'
 
 dotenv.config()
 
@@ -51,5 +52,6 @@ app.listen(
     5050,
     () => {
         console.log(`Server running on http://localhost:5050`)
+        swaggerDocs(app, 5050)
     }
 )
