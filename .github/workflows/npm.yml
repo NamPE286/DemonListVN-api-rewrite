@@ -29,8 +29,7 @@ jobs:
 
       - name: Rebuild the _dist/ directory
         run: 
-          mkdir _dist
-          npm run build
+          mkdir _dist && npm run build
 
       - name: Compare the expected and actual dist/ directories
         run: |
