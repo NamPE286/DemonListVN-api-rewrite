@@ -19,7 +19,6 @@
   "scripts": {
     "build": "npx tsc --project tsconfig.json && npx tsc-alias -p tsconfig.json",
     "start": "node _dist/index.js",
-    "dev": "nodemon _dist/.",
-    "vercel-build": "echo hello"
+    "dev": "nodemon _dist/."
   }
 }
