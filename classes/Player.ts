@@ -43,7 +43,7 @@ export default class {
         if (this.initialized) {
             return this
         }
-
+    
         const { data, error } = await supabase
             .from('players')
             .select(selectStr(this))

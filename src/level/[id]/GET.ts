@@ -1,3 +1,4 @@
+// @deno-types="npm:@types/express"
 import { Request, Response } from 'npm:express';
 import Level from '@classes/Level.ts';
 
@@ -27,7 +28,7 @@ import Level from '@classes/Level.ts';
 export default function (req: Request, res: Response) {
     const { id } = req.params
     const level = new Level(parseInt(id));
-    
+
     level.init()
         .then(data => {
             res.send(JSON.stringify(data))

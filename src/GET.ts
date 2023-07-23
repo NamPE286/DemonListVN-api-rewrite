@@ -1,5 +1,5 @@
+// @deno-types="npm:@types/express"
 import { Request, Response } from 'npm:express';
-
 /**
  * @openapi
  * /:

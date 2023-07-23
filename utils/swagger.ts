@@ -1,3 +1,4 @@
+// @deno-types="npm:@types/express"
 import { Express, Request, Response } from "npm:express";
 import swaggerJsdoc from "npm:swagger-jsdoc";
 import swaggerUi from "npm:swagger-ui-express";
@@ -34,7 +35,7 @@ function swaggerDocs(app: Express, port: number) {
     app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
     app.get("/docs.json", (req: Request, res: Response) => {
-        res.setHeader("Content-Type", "application/json");
+        res.header("Content-Type", "application/json");
         res.send(swaggerSpec);
     });
 

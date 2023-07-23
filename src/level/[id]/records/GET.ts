@@ -1,3 +1,4 @@
+// @deno-types="npm:@types/express"
 import { Request, Response } from 'npm:express';
 import Level from '@classes/Level.ts';
 
