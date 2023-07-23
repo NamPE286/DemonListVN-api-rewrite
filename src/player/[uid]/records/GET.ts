@@ -3,7 +3,7 @@ import Player from '@classes/Player';
 
 /**
  * @openapi
- * /player/{id}/records:
+ * /player/{uid}/records:
  *  get:
  *      tags:
  *      - Player
