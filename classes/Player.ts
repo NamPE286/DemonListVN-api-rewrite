@@ -1,5 +1,6 @@
 import { supabase } from "@db"
 import selectStr from "@utils/selectStr"
+import Record from "@classes/Record"
 
 export default class {
     name: string = ''
@@ -35,12 +36,31 @@ export default class {
             .single()
 
         if (error) {
-            throw error
+            throw new Error(error.message)
         }
 
         this.initialized = true
         Object.assign(this, data)
 
         return this
+    }
+
+    async fetchRecords(): Promise<Record[]> {
+        const { data, error } = await supabase
+            .from('records')
+            .select('*')
+            .eq('userid', this.uid)
+
+        if (error) {
+            throw new Error(error.message)
+        }
+
+        var res: Record[] = []
+
+        for (const i of data) {
+            res.push(Object.assign(new Record('', 0), i))
+        }
+
+        return res
     }
 }

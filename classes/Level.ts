@@ -30,7 +30,7 @@ export default class {
             .single()
 
         if (error) {
-            throw error
+            throw new Error(error.message)
         }
 
         this.initialized = true
