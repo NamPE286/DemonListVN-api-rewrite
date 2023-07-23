@@ -44,6 +44,7 @@ export default class {
             .from('records')
             .select('*')
             .eq('levelid', this.id)
+            .eq('isChecked', false)
 
         if (error) {
             throw new Error(error.message)

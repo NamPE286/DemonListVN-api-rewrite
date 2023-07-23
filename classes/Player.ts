@@ -50,6 +50,7 @@ export default class {
             .from('records')
             .select('*')
             .eq('userid', this.uid)
+            .eq('isChecked', false)
 
         if (error) {
             throw new Error(error.message)
