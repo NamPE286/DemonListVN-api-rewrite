@@ -1,5 +1,5 @@
 // @deno-types="npm:@types/express"
-import express from 'https://esm.sh/express'
+import express from 'npm:express'
 import { checkUser, setCaching } from './middleware.ts'
 import { join } from "https://deno.land/std@0.195.0/path/mod.ts";
 

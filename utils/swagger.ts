@@ -1,5 +1,5 @@
 // @deno-types="npm:@types/express"
-import { Express, Request, Response } from "https://esm.sh/express";
+import { Express, Request, Response } from "npm:express";
 import swaggerJsdoc from "npm:swagger-jsdoc";
 import swaggerUi from "npm:swagger-ui-express";
 import { config } from "https://deno.land/x/dotenv@v3.2.2/mod.ts";
