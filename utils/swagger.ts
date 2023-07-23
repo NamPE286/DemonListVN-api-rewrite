@@ -39,8 +39,6 @@ function swaggerDocs(app: Express, port: number) {
         res.send(swaggerSpec);
     });
 
-
-
     console.log(`Docs available at /docs`);
 }
 
