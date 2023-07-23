@@ -1,5 +1,5 @@
 // @deno-types="npm:@types/express"
-import { Request, Response } from 'npm:express';
+import { Request, Response } from 'https://esm.sh/express';
 import Player from '@classes/Player.ts';
 
 /**

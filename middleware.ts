@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'npm:express';
+import { Request, Response, NextFunction } from 'https://esm.sh/express';
 
 export function checkUser(req: Request, res: Response, next: NextFunction): void {
     next()
