@@ -1,12 +1,14 @@
 import app from './app.ts';
 import swaggerDocs from '@utils/swagger.ts'
-import { config } from "https://deno.land/x/dotenv@v3.2.2/mod.ts";
+import { load } from "https://deno.land/std@0.195.0/dotenv/mod.ts";
+
+const ip = (await load()).EXPRESS_IP
 
 app.listen(
     5050,
-    config().EXPRESS_IP,
+    ip,
     () => {
-        console.log(`Server running on http://${config().EXPRESS_IP}:5050`)
+        console.log(`Server running on http://${ip}:5050`)
         swaggerDocs(app, 5050)
     }
 )

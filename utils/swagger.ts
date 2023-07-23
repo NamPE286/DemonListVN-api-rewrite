@@ -39,7 +39,9 @@ function swaggerDocs(app: Express, port: number) {
         res.send(swaggerSpec);
     });
 
-    console.log(`Docs available at http://${config().EXPRESS_IP}:${port}/docs`);
+
+
+    console.log(`Docs available at /docs`);
 }
 
 export default swaggerDocs;
