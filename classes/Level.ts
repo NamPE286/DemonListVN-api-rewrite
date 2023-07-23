@@ -1,21 +1,30 @@
 import { supabase } from "@db"
-import Record from "@classes/Record"
-import selectStr from "@utils/selectStr"
+import Record from "@classes/Record.ts"
+import selectStr from "@utils/selectStr.ts"
 
 export default class {
-    id: number = NaN
-    name: string = ''
-    creator: string = ''
-    videoID: string = ''
-    minProgress: number = NaN
-    flTop: number = NaN
-    dlTop: number = NaN
-    rating: number = NaN
-    ldm: number[] = []
-    initialized: boolean = false
+    id: number
+    name: string
+    creator: string
+    videoID: string
+    minProgress: number
+    flTop: number
+    dlTop: number
+    rating: number
+    ldm: number[]
+    initialized: boolean
 
     constructor(id: number) {
         this.id = id
+        this.name = ''
+        this.creator = ''
+        this.videoID = ''
+        this.minProgress = NaN
+        this.flTop = NaN
+        this.dlTop = NaN
+        this.rating = NaN
+        this.ldm = []
+        this.initialized = false
     }
 
     async init(): Promise<this> {
@@ -50,7 +59,7 @@ export default class {
             throw new Error(error.message)
         }
 
-        var res: Record[] = []
+        const res: Record[] = []
 
         for (const i of data) {
             res.push(Object.assign(new Record('', 0), i))

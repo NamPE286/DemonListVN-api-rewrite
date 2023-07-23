@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response } from 'npm:express';
 
 /**
  * @openapi
@@ -12,6 +12,6 @@ import { Request, Response } from 'express';
  *                  application/json:
  *                      schema:
  */
-export default async function (req: Request, res: Response) {
+export default function (req: Request, res: Response) {
     res.send({ timestamp: (new Date()).toISOString() })
 }

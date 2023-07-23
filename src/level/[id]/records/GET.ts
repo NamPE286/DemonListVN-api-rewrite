@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import Level from '@classes/Level';
+import { Request, Response } from 'npm:express';
+import Level from '@classes/Level.ts';
 
 /**
  * @openapi
@@ -24,7 +24,7 @@ import Level from '@classes/Level';
  *          404:
  *              description: Level does not exist
  */
-export default async function (req: Request, res: Response) {
+export default function (req: Request, res: Response) {
     const { id } = req.params
     const level = new Level(parseInt(id));
     

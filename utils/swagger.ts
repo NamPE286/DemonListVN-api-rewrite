@@ -1,9 +1,7 @@
-import { Express, Request, Response } from "express";
-import swaggerJsdoc from "swagger-jsdoc";
-import swaggerUi from "swagger-ui-express";
-import dotenv from 'dotenv';
-
-dotenv.config()
+import { Express, Request, Response } from "npm:express";
+import swaggerJsdoc from "npm:swagger-jsdoc";
+import swaggerUi from "npm:swagger-ui-express";
+import { config } from "https://deno.land/x/dotenv@v3.2.2/mod.ts";
 
 const options: swaggerJsdoc.Options = {
     definition: {
@@ -40,7 +38,7 @@ function swaggerDocs(app: Express, port: number) {
         res.send(swaggerSpec);
     });
 
-    console.log(`Docs available at http://${process.env.EXPRESS_IP}:${port}/docs`);
+    console.log(`Docs available at http://${config().EXPRESS_IP}:${port}/docs`);
 }
 
 export default swaggerDocs;

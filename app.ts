@@ -1,50 +1,49 @@
-import express from 'express'
-import dotenv from 'dotenv'
-import fs from 'fs'
-import path from 'path'
-import { checkUser, setCaching } from './middleware'
+import express from 'npm:express'
+import { checkUser, setCaching } from './middleware.ts'
+import { join } from "https://deno.land/std@0.195.0/path/mod.ts";
 
-dotenv.config()
 
 const app = express()
 
-function* walkSync(dir: string): Generator<string> {
-    const files = fs.readdirSync(dir, { withFileTypes: true });
-    for (const file of files) {
-        if (file.isDirectory()) {
-            yield* walkSync(path.join(dir, file.name));
-        } else {
-            yield path.join(dir, file.name);
-        }
+async function* recursiveReaddir(path: string): AsyncGenerator<string, void> {
+  for await (const dirEntry of Deno.readDir(path)) {
+    if (dirEntry.isDirectory) {
+      yield* recursiveReaddir(join(path, dirEntry.name));
+    } else if (dirEntry.isFile) {
+      yield join(path, dirEntry.name);
     }
+  }
 }
 
-for (const filePath of walkSync('./src')) {
-    var reqPath: string = './' + filePath
-        .split('\\')
-        .join('/')
-        .slice(0, -3)
-    var route: string = '/' + reqPath
-        .split('/')
-        .slice(2, -1)
-        .join('/')
-        .replaceAll('[', ':')
-        .replaceAll(']', '')
-        .replaceAll('{', ':')
-        .replaceAll('}', '?')
-    if (reqPath.endsWith('GET', reqPath.length)) {
-        app.get(route, setCaching, require(reqPath).default)
-    }
-    if (reqPath.endsWith('POST', reqPath.length)) {
-        app.post(route, checkUser, require(reqPath).default)
-    }
-    if (reqPath.endsWith('PUT', reqPath.length)) {
-        app.put(route, checkUser, require(reqPath).default)
-    }
-    if (reqPath.endsWith('DELETE', reqPath.length)) {
-        app.delete(route, checkUser, require(reqPath).default)
-    }
-    console.log(`Loaded path ${reqPath} to route ${route}`)
+for await (const filePath of recursiveReaddir('./src')) {
+  const reqPath: string = './' + filePath
+    .split('\\')
+    .join('/')
+  const route: string = '/' + reqPath
+    .split('/')
+    .slice(2, -1)
+    .join('/')
+    .replaceAll('[', ':')
+    .replaceAll(']', '')
+    .replaceAll('{', ':')
+    .replaceAll('}', '?')
+
+  const fn = await import(reqPath)
+
+  if (reqPath.endsWith('GET.ts', reqPath.length)) {
+    app.get(route, setCaching, fn.default)
+  }
+  if (reqPath.endsWith('POST.ts', reqPath.length)) {
+    app.post(route, checkUser, fn.default)
+  }
+  if (reqPath.endsWith('PUT.ts', reqPath.length)) {
+    app.put(route, checkUser, fn.default)
+  }
+  if (reqPath.endsWith('DELETE.ts', reqPath.length)) {
+    app.delete(route, checkUser, fn.default)
+  }
+
+  console.log(`Loaded path ${reqPath} to route ${route}`)
 }
 
 export default app

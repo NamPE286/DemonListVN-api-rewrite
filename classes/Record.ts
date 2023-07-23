@@ -1,18 +1,27 @@
 export default class {
-    levelid: number = NaN
-    userid: string = ''
-    progress: number = NaN
-    timestamp: number = NaN
-    flPt: number = NaN
-    dlPt: number = NaN
-    refreshRate: number = NaN
-    videoLink: string = ''
-    mobile: boolean = false
-    isChecked: boolean = false
-    comment: string = ''
+    levelid: number
+    userid: string
+    progress: number
+    timestamp: number
+    flPt: number
+    dlPt: number
+    refreshRate: number
+    videoLink: string
+    mobile: boolean
+    isChecked: boolean
+    comment: string
     
     constructor(userid: string, levelid: number) {
         this.levelid = levelid
         this.userid = userid
+        this.progress = NaN
+        this.timestamp = NaN
+        this.flPt = NaN
+        this.dlPt = NaN
+        this.refreshRate = NaN
+        this.videoLink = ''
+        this.mobile = false
+        this.isChecked = false
+        this.comment = ''
     }
 }

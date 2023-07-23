@@ -1,6 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
-import dotenv from 'dotenv';
+import { createClient } from "npm:@supabase/supabase-js";
+import { config } from "https://deno.land/x/dotenv@v3.2.2/mod.ts";
 
-dotenv.config()
-
-export const supabase = createClient(process.env.SUPABASE_API_URL, process.env.SUPABASE_API_KEY)
+export const supabase = createClient(config().SUPABASE_API_URL, config().SUPABASE_API_KEY)

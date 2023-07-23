@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import Player from '@classes/Player';
+import { Request, Response } from 'npm:express';
+import Player from '@classes/Player.ts';
 
 /**
  * @openapi
@@ -24,7 +24,7 @@ import Player from '@classes/Player';
  *          404:
  *              description: Player does not exist
  */
-export default async function (req: Request, res: Response) {
+export default function (req: Request, res: Response) {
     const { uid } = req.params
     const player = new Player(uid)
 
