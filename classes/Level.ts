@@ -1,16 +1,17 @@
 import { supabase } from "@db"
 import Record from "@classes/Record"
+import selectStr from "@utils/selectStr"
 
 export default class {
-    id: number
-    name: string
-    creator: string
-    videoID: string
-    minProgress: number
-    flTop: number
-    dlTop: number
-    rating: number
-    ldm: number[]
+    id: number = NaN
+    name: string = ''
+    creator: string = ''
+    videoID: string = ''
+    minProgress: number = NaN
+    flTop: number = NaN
+    dlTop: number = NaN
+    rating: number = NaN
+    ldm: number[] = []
     initialized: boolean = false
 
     constructor(id: number) {
@@ -24,15 +25,17 @@ export default class {
 
         const { data, error } = await supabase
             .from('levels')
-            .select('id, name, creator, videoID, minProgress, flTop, dlTop, rating, ldm')
+            .select(selectStr(this))
             .eq('id', this.id)
             .single()
 
         if (error) {
             throw error
         }
+
         this.initialized = true
         Object.assign(this, data)
+
         return this
     }
 

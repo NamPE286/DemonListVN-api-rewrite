@@ -27,11 +27,13 @@ import Level from '@classes/Level';
 export default async function (req: Request, res: Response) {
     const { id } = req.params
     const level = new Level(parseInt(id));
+    
     level.init()
         .then(data => {
             res.send(JSON.stringify(data))
         })
-        .catch(() => {
+        .catch((err) => {
+            console.error(err)
             res.status(404).send()
         })
 }

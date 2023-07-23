@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import Player from '@classes/Player';
 
 /**
  * @openapi
@@ -24,5 +25,15 @@ import { Request, Response } from 'express';
  *              description: Player does not exist
  */
 export default async function (req: Request, res: Response) {
-    res.send({ timestamp: (new Date()).toISOString() })
+    const { uid } = req.params
+    const player = new Player(uid)
+
+    player.init()
+        .then(data => {
+            res.send(JSON.stringify(data))
+        })
+        .catch((err) => {
+            console.error(err)
+            res.status(404).send()
+        })
 }
