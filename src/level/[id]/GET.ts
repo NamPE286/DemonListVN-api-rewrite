@@ -17,12 +17,12 @@ import Level from '@classes/Level';
  *              type: integer
  *      responses:
  *          200:
- *              description: Return a level
+ *              description: Return a level object
  *              content:
  *                  application/json:
  *                      schema:
  *          404:
- *              description: Invalid ID or level does not exist
+ *              description: Level does not exist
  */
 export default async function (req: Request, res: Response) {
     const { id } = req.params
