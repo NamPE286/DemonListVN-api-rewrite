@@ -28,7 +28,7 @@ export default async function (req: Request, res: Response) {
     const { id } = req.params
     const level = new Level(parseInt(id));
     
-    level.fetchRecords()
+    level.fetchRecords(true)
         .then(data => {
             res.send(JSON.stringify(data))
         })

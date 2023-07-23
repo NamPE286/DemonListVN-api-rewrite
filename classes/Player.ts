@@ -45,12 +45,12 @@ export default class {
         return this
     }
 
-    async fetchRecords(): Promise<Record[]> {
+    async fetchRecords(accepted: boolean): Promise<Record[]> {
         const { data, error } = await supabase
             .from('records')
             .select('*')
             .eq('userid', this.uid)
-            .eq('isChecked', false)
+            .eq('isChecked', accepted)
 
         if (error) {
             throw new Error(error.message)

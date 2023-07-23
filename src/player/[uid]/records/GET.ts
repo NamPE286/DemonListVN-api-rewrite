@@ -28,7 +28,7 @@ export default async function (req: Request, res: Response) {
     const { uid } = req.params
     const player = new Player(uid);
     
-    player.fetchRecords()
+    player.fetchRecords(true)
         .then(data => {
             res.send(JSON.stringify(data))
         })
