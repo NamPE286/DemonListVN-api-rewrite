@@ -1,17 +1,17 @@
 import { Request, Response } from 'express';
-import Player from '@classes/Player';
+import Level from '@classes/Level';
 
 /**
  * @openapi
- * /player/{uid}/records:
+ * /level/{id}/submissions:
  *  get:
  *      tags:
- *      - Player
- *      summary: Get level's records by UID
+ *      - Level
+ *      summary: Get level's submissions by ID
  *      parameters:
- *        - name: uid
+ *        - name: id
  *          in: path
- *          description: The UID of the player
+ *          description: The ID of the level
  *          required: true
  *          schema:
  *              type: integer
@@ -22,13 +22,13 @@ import Player from '@classes/Player';
  *                  application/json:
  *                      schema:
  *          404:
- *              description: Player does not exist
+ *              description: Level does not exist
  */
 export default async function (req: Request, res: Response) {
-    const { uid } = req.params
-    const player = new Player(uid);
+    const { id } = req.params
+    const level = new Level(parseInt(id));
     
-    player.fetchRecords(true)
+    level.fetchRecords(false)
         .then(data => {
             res.send(JSON.stringify(data))
         })

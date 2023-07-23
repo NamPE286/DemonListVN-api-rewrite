@@ -3,11 +3,11 @@ import Player from '@classes/Player';
 
 /**
  * @openapi
- * /player/{uid}/records:
+ * /player/{uid}/submissions:
  *  get:
  *      tags:
  *      - Player
- *      summary: Get level's records by UID
+ *      summary: Get level's submissions by UID
  *      parameters:
  *        - name: uid
  *          in: path
@@ -28,7 +28,7 @@ export default async function (req: Request, res: Response) {
     const { uid } = req.params
     const player = new Player(uid);
     
-    player.fetchRecords(true)
+    player.fetchRecords(false)
         .then(data => {
             res.send(JSON.stringify(data))
         })
