@@ -1,5 +1,5 @@
 // @deno-types="npm:@types/express"
-import { Request, Response, NextFunction } from 'npm:express';
+import { Request, Response, NextFunction } from 'express';
 
 export function checkUser(req: Request, res: Response, next: NextFunction): void {
     next()

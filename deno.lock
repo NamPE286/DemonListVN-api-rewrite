@@ -1,6 +1,7 @@
 {
   "version": "2",
   "remote": {
+    "express@4.18.2": "3e3bc15be8f80b187833860602fd25c7cbfa4c7778c59b5f40cc079419feeecf",
     "https://deno.land/std@0.150.0/media_types/_util.ts": "ce9b4fc4ba1c447dafab619055e20fd88236ca6bdd7834a21f98bd193c3fbfa1",
     "https://deno.land/std@0.150.0/media_types/mod.ts": "2d4b6f32a087029272dc59e0a55ae3cc4d1b27b794ccf528e94b1925795b3118",
     "https://deno.land/std@0.150.0/media_types/vendor/mime-db.v1.52.0.ts": "724cee25fa40f1a52d3937d6b4fbbfdd7791ff55e1b7ac08d9319d5632c7f5af",
@@ -225,6 +226,7 @@
     "https://dev.jspm.io/npm:z-schema@5.0.6/_/b0a22c2f.js": "285e2783bf4dd9a2a5b3997e7c2ad868ff5e64419086749abd14634b554e6adb",
     "https://dev.jspm.io/swagger-parser": "10bc2ce6adabe170e4fd3dfd460c1c0081776ad0ab3246e3ea8da905ac71cecd",
     "https://esm.sh/@supabase/supabase-js@2.27.0": "7b3585344420e0030a70dbc91230f21b9b520bc9f83acdb369f644c839025ef5",
+    "https://esm.sh/express@4.18.2": "3e3bc15be8f80b187833860602fd25c7cbfa4c7778c59b5f40cc079419feeecf",
     "https://esm.sh/swagger-jsdoc@6.2.8": "88b575dfa3811f272844a54c31b5f498eff8cb6a0a7fc9c6f8345b79ed633bec",
     "https://esm.sh/v129/@apidevtools/json-schema-ref-parser@9.1.2/denonext/json-schema-ref-parser.mjs": "0ca64631b1cde9c675fb8821e683fe87119aabbb26197611dac660944fde4910",
     "https://esm.sh/v129/@apidevtools/json-schema-ref-parser@9.1.2/denonext/lib/dereference.js": "91b443682e4fcf74c342b205fd4ffc94a539c1ff7a86970b5b508c7eb04becb1",
@@ -321,8 +323,7 @@
     "https://esm.sh/v129/websocket@1.0.34/denonext/websocket.mjs": "8d8565e250b084b34b9a9345f2368772b0ceeeae302543c7e2bd2c4e3fb5c4a0",
     "https://esm.sh/v129/wrappy@1.0.2/denonext/wrappy.mjs": "3c31e4782e0307cf56b319fcec6110f925dafe6cb47a8fa23350d480f5fa8b06",
     "https://esm.sh/v129/yaml@2.0.0-1/denonext/yaml.mjs": "dfaa98a1290c76e4e36243d290fd7c94f3cf39e52906b8819edfca9db78c9ff1",
-    "https://esm.sh/v129/z-schema@5.0.5/denonext/z-schema.mjs": "83a7bf7645f3f21eec1d8a776e238e56cd71cd34e837f70c4a85aa7f406bb5f6",
-    "npm:express@4.18.2": "3e3bc15be8f80b187833860602fd25c7cbfa4c7778c59b5f40cc079419feeecf"
+    "https://esm.sh/v129/z-schema@5.0.5/denonext/z-schema.mjs": "83a7bf7645f3f21eec1d8a776e238e56cd71cd34e837f70c4a85aa7f406bb5f6"
   },
   "npm": {
     "specifiers": {
