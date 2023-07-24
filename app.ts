@@ -16,7 +16,7 @@ async function* recursiveReaddir(path: string): AsyncGenerator<string, void> {
   }
 }
 
-for await (const filePath of recursiveReaddir('./src')) {
+for await (const filePath of recursiveReaddir('./routes')) {
   const reqPath: string = './' + filePath
     .split('\\')
     .join('/')
